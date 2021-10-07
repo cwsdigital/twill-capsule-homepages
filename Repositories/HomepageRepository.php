@@ -11,10 +11,16 @@ use A17\Twill\Repositories\Behaviors\HandleFiles;
 use A17\Twill\Repositories\Behaviors\HandleRevisions;
 use App\Twill\Capsules\Homepages\Models\Homepage;
 use App\Twill\Capsules\Base\Models\Template;
+use CwsDigital\TwillMetadata\Repositories\Behaviours\HandleMetadata;
 
 class HomepageRepository extends ModuleRepository
 {
-    use HandleBlocks, HandleTranslations ,HandleMedias, HandleFiles, HandleRevisions;
+    use HandleBlocks;
+    use HandleTranslations;
+    use HandleMedias;
+    use HandleFiles;
+    use HandleRevisions;
+    use HandleMetadata;
 
     public function __construct(Homepage $model)
     {
@@ -51,7 +57,9 @@ class HomepageRepository extends ModuleRepository
         ]);
 
         return app(HomepageRepository::class)->create([
-            'title' => config('app.name'),
+            'title' => [
+                config('app.locale') => 'Home',
+            ],
             'template_id' => $template->id,
             'published' => true,
         ]);

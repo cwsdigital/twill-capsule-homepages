@@ -12,6 +12,8 @@
         'label' => 'Sub Heading',
         'maxlength' => 100
     ])
+
+    @formField('block_editor')
 @stop
 
 @section('fieldsets')

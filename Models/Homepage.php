@@ -15,7 +15,14 @@ use CwsDigital\TwillMetadata\Models\Behaviours\HasMetadata;
 
 class Homepage extends Model
 {
-    use HasBlocks, HasTranslation, HasMedias, HasFiles, HasRevisions, HasHeading, HasMetadata, HasTemplate;
+    use HasBlocks;
+    use HasTranslation;
+    use HasMedias;
+    use HasFiles;
+    use HasRevisions;
+    use HasHeading;
+    use HasMetadata;
+    use HasTemplate;
 
     protected $fillable = [
         'published',
